@@ -28,9 +28,9 @@
 | condition_id      | integer    | null: false                    |
 | text              | text       | null: false                    |
 | price             | integer    | null: false                    |
-| shipping_payer_id | integer     | null: false                    |
-| area_id           | integer     | null: false                    |
-| take_time         | integer    | null: false                    |
+| shipping_payer_id | integer    | null: false                    |
+| area_id           | integer    | null: false                    |
+| take_time_id      | integer    | null: false                    |
 | user              | references | null: false, foreign_key: true |
 
 ### Association
