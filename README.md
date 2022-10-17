@@ -21,17 +21,17 @@
 
 ## items table
 
-| Column           | Type       | Options                        |
-|----------------- |------------|--------------------------------|
-| item_name        | string     | null: false                    |
-| category_id      | integer    | null: false                    |
-| condition        | string     | null: false                    |
-| text             | text       | null: false                    |
-| price            | integer    | null: false                    |
-| shipping_payer   | string     | null: false                    |
-| area             | string     | null: false                    |
-| take_time        | integer    | null: false                    |
-| user             | references | null: false, foreign_key: true |
+| Column            | Type       | Options                        |
+|------------------ |------------|--------------------------------|
+| item_name         | string     | null: false                    |
+| category_id       | integer    | null: false                    |
+| condition_id      | integer    | null: false                    |
+| text              | text       | null: false                    |
+| price             | integer    | null: false                    |
+| shipping_payer_id | integer     | null: false                    |
+| area_id           | integer     | null: false                    |
+| take_time         | integer    | null: false                    |
+| user              | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -59,6 +59,7 @@
 | post_code     | string        | null: false                    |
 | prefecture_id | integer       | null: false                    |
 | city          | string        | null: false                    |
+| building_name | string        |                                |
 | house_number  | string        | null: false                    |
 | number        | string        | null: false                    |
 | purchase      | references    | null: false, foreign_key: true |
