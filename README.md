@@ -5,13 +5,13 @@
 | Column             | Type                | Options                   |
 |--------------------|---------------------|---------------------------|
 | nickname           | string              | null: false               |
-| email              | string              | null: false               |
+| email              | string              | null: false, unique: true |
 | encrypted_password | string              | null: false               |
 | first_name         | string              | null: false               |
 | last_name          | string              | null: false               |
 | first_name_kana    | string              | null: false               |
 | last_name_kana     | string              | null: false               |
-| birthday           | datetime            | null: false               |
+| birthday           | date                | null: false               |
 
 
 ### Association
@@ -23,8 +23,9 @@
 
 | Column           | Type       | Options                        |
 |----------------- |------------|--------------------------------|
-| item_name_id     | integer    | null: false                    |
+| item_name        | string     | null: false                    |
 | category_id      | integer    | null: false                    |
+| condition        | string     | null: false                    |
 | text             | text       | null: false                    |
 | price            | integer    | null: false                    |
 | shipping_payer   | string     | null: false                    |
@@ -56,7 +57,7 @@
 | Column        | Type          | Options                        |
 |-------------- |-------------- |--------------------------------|
 | post_code     | string        | null: false                    |
-| prefecture    | integer       | null: false                    |
+| prefecture_id | integer       | null: false                    |
 | city          | string        | null: false                    |
 | house_number  | string        | null: false                    |
 | number        | string        | null: false                    |
