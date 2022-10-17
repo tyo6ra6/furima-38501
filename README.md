@@ -4,10 +4,14 @@
 
 | Column             | Type                | Options                   |
 |--------------------|---------------------|---------------------------|
-| email              | string              | null: false, unique: true |
-| encrypted_password | string              | null: false               |
 | nickname           | string              | null: false               |
-| birthday           | string              | null: false               |
+| email              | string              | null: false               |
+| encrypted_password | string              | null: false               |
+| first_name         | string              | null: false               |
+| last_name          | string              | null: false               |
+| first_name_kana    | string              | null: false               |
+| last_name_kana     | string              | null: false               |
+| birthday           | datetime            | null: false               |
 
 
 ### Association
@@ -19,9 +23,8 @@
 
 | Column           | Type       | Options                        |
 |----------------- |------------|--------------------------------|
-| item_name        | string     | null: false                    |
-| category         | string     | null: false                    |
-| image            | string     | null: false                    |
+| item_name_id     | integer    | null: false                    |
+| category_id      | integer    | null: false                    |
 | text             | text       | null: false                    |
 | price            | integer    | null: false                    |
 | shipping_payer   | string     | null: false                    |
@@ -31,14 +34,13 @@
 
 ### Association
 
-* has_many :purchases
+- has_one: purchase
 - belongs_to :user
 
 ## purchases table
 
 | Column      | Type       | Options                        |
 |-------------|------------|--------------------------------|
-| text        | text       | null: false                    |
 | user        | references | null: false, foreign_key: true |
 | item        | references | null: false, foreign_key: true |
 
@@ -49,15 +51,15 @@
 - has_one: address
 
 
-## address table
+## addresses table
 
 | Column        | Type          | Options                        |
 |-------------- |-------------- |--------------------------------|
-| post_code     | integer       | null: false                    |
-| prefecture    | string        | null: false                    |
+| post_code     | string        | null: false                    |
+| prefecture    | integer       | null: false                    |
 | city          | string        | null: false                    |
-| house_number  | integer       | null: false                    |
-| number        | integer       | null: false                    |
+| house_number  | string        | null: false                    |
+| number        | string        | null: false                    |
 | purchase      | references    | null: false, foreign_key: true |
 
 
