@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
          validates :last_name, presence: true,
                    format: { 
-                    with: /\A[ぁ-んァ-ン一-龥]/,
+                    with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/,
                     message: "全角文字を使用してください"
                     } 
 
