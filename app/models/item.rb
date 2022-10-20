@@ -20,13 +20,14 @@ class Item < ApplicationRecord
 
   validates :item_name, presence: true
   validates :text, presence: true
-  validates :price, presence: true  
+  validates :price, presence: true, numericality: { in: 300..9999999 }
+              
   validates :image, presence: true
 
-  validates :genre_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :shipping_payer_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :shipping_payers_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :area_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :take_time_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :take_times_id, numericality: { other_than: 1 , message: "can't be blank"}
   
 end
