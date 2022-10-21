@@ -31,17 +31,22 @@ RSpec.describe Item, type: :model do
       it 'priceが空では保存できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("Price は ¥300~9,999,999 の間で半角数字で指定してください")
       end
       it 'priceが¥299円以下でないと保存できない' do
         @item.price = '100'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than 300")
+        expect(@item.errors.full_messages).to include("Price は ¥300~9,999,999 の間で半角数字で指定してください")
       end
       it 'priceが10000000円以上だと保存できない' do
         @item.price = '1000000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than 9999999")
+        expect(@item.errors.full_messages).to include("Price は ¥300~9,999,999 の間で半角数字で指定してください")
+      end
+      it 'price半角数字以外が含まれている場合は出品できない' do
+        @item.price = 'aaa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price は ¥300~9,999,999 の間で半角数字で指定してください")
       end
       it '紐づくユーザーが存在しないと保存できない' do
         @item.user = nil
@@ -72,6 +77,31 @@ RSpec.describe Item, type: :model do
         @item.take_time_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Take time can't be blank")
+      end
+      it 'category_idに「---」が選択されている場合は出品できない' do
+        @item.category_id = '「---」'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+      it 'condition_idに「---」が選択されている場合は出品できない' do
+        @item.category_id = '「---」'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+      it 'shipping_payer_idに「---」が選択されている場合は出品できない' do
+        @item.category_id = '「---」'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+      it 'area_idに「---」が選択されている場合は出品できない' do
+        @item.category_id = '「---」'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+      it 'take_time_idに「---」が選択されている場合は出品できない' do
+        @item.category_id = '「---」'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
     end
   end

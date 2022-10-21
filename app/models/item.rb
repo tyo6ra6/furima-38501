@@ -20,7 +20,7 @@ class Item < ApplicationRecord
 
   validates :item_name, presence: true
   validates :text, presence: true
-  validates :price, presence: true, numericality: { greater_than: 300,less_than: 9999999 }
+  validates :price, numericality:{ greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "は ¥300~9,999,999 の間で半角数字で指定してください" }
               
   validates :image, presence: true
 
