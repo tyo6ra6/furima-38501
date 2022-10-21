@@ -1,34 +1,26 @@
 class ItemsController < ApplicationController
-    before_action :contributor_confirmation, only: [:new ]
-  
+  before_action :authenticate_user!, only: [:new]
 
+  def index
+  end
 
-    def  index
-        
+  def new
+    @item = Item.new
+  end
+
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
     end
+  end
 
-    def new
-         @item = Item.new
-    end
+  private
 
-    def create
-        
-        @item = Item.new(item_params)
-        if @item.save
-            redirect_to root_path
-          else
-            render :new
-        end
-    end
-    
-    private
-
-    def item_params
-       params.require(:item).permit(:item_name, :text, :price, :image, :category_id, :condition_id, :shipping_payer_id, :area_id, :take_time_id ).merge(user_id: current_user.id)
-    end
-
-    def contributor_confirmation
-        redirect_to new_user_session_path unless current_user
-     end
-   
+  def item_params
+    params.require(:item).permit(:item_name, :text, :price, :image, :category_id, :condition_id, :shipping_payer_id, :area_id,
+                                 :take_time_id).merge(user_id: current_user.id)
+  end
 end

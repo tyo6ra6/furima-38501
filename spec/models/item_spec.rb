@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-
   before do
     @item = FactoryBot.build(:item)
   end
@@ -31,27 +30,27 @@ RSpec.describe Item, type: :model do
       it 'priceが空では保存できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は ¥300~9,999,999 の間で半角数字で指定してください")
+        expect(@item.errors.full_messages).to include('Price は ¥300~9,999,999 の間で半角数字で指定してください')
       end
       it 'priceが¥299円以下でないと保存できない' do
         @item.price = '100'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は ¥300~9,999,999 の間で半角数字で指定してください")
+        expect(@item.errors.full_messages).to include('Price は ¥300~9,999,999 の間で半角数字で指定してください')
       end
       it 'priceが10000000円以上だと保存できない' do
         @item.price = '1000000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は ¥300~9,999,999 の間で半角数字で指定してください")
+        expect(@item.errors.full_messages).to include('Price は ¥300~9,999,999 の間で半角数字で指定してください')
       end
       it 'price半角数字以外が含まれている場合は出品できない' do
         @item.price = 'aaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は ¥300~9,999,999 の間で半角数字で指定してください")
+        expect(@item.errors.full_messages).to include('Price は ¥300~9,999,999 の間で半角数字で指定してください')
       end
       it '紐づくユーザーが存在しないと保存できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
       it 'category_idが空だと保存できない  ' do
         @item.category_id = ''
@@ -99,13 +98,10 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it 'take_time_idに「---」が選択されている場合は出品できない' do
-        @item.category_id = '「---」'
+        @item.category_id = '「---」」'
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
     end
   end
 end
-
-
-
