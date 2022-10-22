@@ -132,7 +132,7 @@
      <% if  @items.present? %>
       <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to item_path(item.id), method: :get do%>
         <div class='item-img-content'>
        
           <%= image_tag item.image, class: "item-img" if item.image.attached? %>
@@ -153,7 +153,7 @@
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
-         <% end %>
+        <% end %>
             </div>
           </div>
         </div>
