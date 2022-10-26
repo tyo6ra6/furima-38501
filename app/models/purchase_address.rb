@@ -9,6 +9,7 @@ class PurchaseAddress
     validates :city
     validates :number,    format: {with: /\A\d{10,11}\z/ , message: "is invalid."}
     validates :house_number
+    validates :token
   end
 
     def save
