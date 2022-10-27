@@ -7,14 +7,12 @@ class PurchaseAddress
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
     validates :prefecture_id
     validates :city
-   
+    validates :number, format: { with: /\A\d{10,11}\z/, message: 'is invalid.' }
     validates :house_number
     validates :token
     validates :user_id
     validates :item_id
   end
-
-  validates :number, format: { with: /\A\d{10,11}\z/, message: 'is invalid.' }
 
   def save
     # 購入情報を保存し、変数purchaseに代入する
