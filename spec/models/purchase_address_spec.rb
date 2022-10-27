@@ -13,6 +13,10 @@ describe '商品購入' do
     it 'すべての値が正しく入力されていれば購入できること' do
       expect(@purchase_address).to be_valid
     end
+    it 'building_nameは空でも購入できること' do
+      @purchase_address.building_name = ''
+      expect(@purchase_address).to be_valid
+    end
   end
 
   context '内容に問題がある場合' do
@@ -66,8 +70,18 @@ describe '商品購入' do
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
     end
+    it 'userが紐付いていないと購入できないこと' do
+      @purchase_address.user_id = nil
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("User can't be blank")
+    end
+    it 'itemが紐付いていないと購入できないこと' do
+      @purchase_address.item_id = nil
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Item can't be blank")
+    end
+   end
   end
-end
 end
 
 

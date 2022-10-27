@@ -10,7 +10,10 @@ class PurchaseAddress
     validates :number,    format: {with: /\A\d{10,11}\z/ , message: "is invalid."}
     validates :house_number
     validates :token
+    validates :user_id
+    validates :item_id
   end
+
 
     def save
       # 購入情報を保存し、変数purchaseに代入する
