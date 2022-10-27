@@ -5,9 +5,8 @@ FactoryBot.define do
     city           { '東京都' }
     house_number   { '1-1' }
     number         { '08085926592' }
-    token          {"tok_abcdefghijk00000000000000000"}
+    token          { 'tok_abcdefghijk00000000000000000' }
     association :user
     association :item
-
   end
 end
