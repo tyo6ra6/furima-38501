@@ -5,6 +5,7 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new
     redirect_to root_path if current_user == @item.user
+    redirect_to root_path unless @item.purchase.nil?
   end
 
   def create
@@ -35,4 +36,5 @@ class PurchasesController < ApplicationController
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
+  
 end
