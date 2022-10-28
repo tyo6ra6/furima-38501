@@ -16,9 +16,9 @@ class Item < ApplicationRecord
             numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
                             message: 'は ¥300~9,999,999 の間で半角数字で指定してください' }
   validates :image, presence: true
-  validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :shipping_payer_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :area_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :take_time_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :category_id, numericality: { other_than: 1, message: "を選択してください" }
+  validates :condition_id, numericality: { other_than: 1, message: "を選択したください" }
+  validates :shipping_payer_id, numericality: { other_than: 1, message: "を選択してください" }
+  validates :area_id, numericality: { other_than: 1, message: "を選択してください" }
+  validates :take_time_id, numericality: { other_than: 1, message: "を選択してください" }
 end

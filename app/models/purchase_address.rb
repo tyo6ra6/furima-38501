@@ -4,10 +4,10 @@ class PurchaseAddress
                 :token
 
   with_options presence: true do
-    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
-    validates :prefecture_id, numericality: { other_than: 1 } 
+    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'にハイフンを含めてください' }
+    validates :prefecture_id, numericality: { other_than: 1, message: 'を選択してください'} 
     validates :city
-    validates :number, format: { with: /\A\d{10,11}\z/, message: 'is invalid.' }
+    validates :number, format: { with: /\A\d{10,11}\z/, message: 'は10〜11桁以内にしてください' }
     validates :house_number
     validates :token
     validates :user_id
